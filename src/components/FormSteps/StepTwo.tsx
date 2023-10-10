@@ -2,16 +2,23 @@
 
 import React from "react"
 import { useFormContext } from "../../utils/formContext"
+import PlanCard from "../UI/PlanCard"
+import ToggleSwitch from "../UI/ToogleSwitch"
 
 const StepTwo: React.FC = () => {
   const [{ stepTwo }, dispatch] = useFormContext()
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target
-
+  const handleSelectPlan = (plan: string) => {
     dispatch({
       type: "SET_STEP_TWO",
-      payload: { ...stepTwo, [name]: value },
+      payload: { ...stepTwo, plan },
+    })
+  }
+
+  const handleTogglePayment = () => {
+    dispatch({
+      type: "SET_STEP_TWO",
+      payload: { ...stepTwo, isYearly: !stepTwo.isYearly },
     })
   }
 
@@ -19,37 +26,39 @@ const StepTwo: React.FC = () => {
     event.preventDefault()
 
     // Validate and save data, then go to next step
-    // dispatch({ type: 'SET_STEP', payload: 3 });
+    dispatch({ type: "SET_STEP", payload: 3 })
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor='plan'>Plan:</label>
-      <select
-        id='plan'
-        name='plan'
-        value={stepTwo.plan}
-        onChange={handleChange}
-        required
-      >
-        <option value=''>--Please choose an option--</option>
-        <option value='arcade'>Arcade</option>
-        <option value='advanced'>Advanced</option>
-        <option value='pro'>Pro</option>
-      </select>
+      <div>
+        <PlanCard
+          plan='Arcade'
+          selectedPlan={stepTwo.plan}
+          planPrices={stepTwo.planPrices}
+          onSelectPlan={handleSelectPlan}
+          isYearly={stepTwo.isYearly}
+        />
+        <PlanCard
+          plan='Advanced'
+          selectedPlan={stepTwo.plan}
+          planPrices={stepTwo.planPrices}
+          onSelectPlan={handleSelectPlan}
+          isYearly={stepTwo.isYearly}
+        />
+        <PlanCard
+          plan='Pro'
+          selectedPlan={stepTwo.plan}
+          planPrices={stepTwo.planPrices}
+          onSelectPlan={handleSelectPlan}
+          isYearly={stepTwo.isYearly}
+        />
+      </div>
 
-      <label htmlFor='payment'>Payment:</label>
-      <select
-        id='payment'
-        name='payment'
-        value={stepTwo.paymentType}
-        onChange={handleChange}
-        required
-      >
-        <option value=''>--Please choose an option--</option>
-        <option value='monthly'>Monthly</option>
-        <option value='yearly'>Yearly</option>
-      </select>
+      <ToggleSwitch
+        isYearly={stepTwo.isYearly}
+        onToggle={handleTogglePayment}
+      />
 
       <button type='submit'>Next</button>
     </form>

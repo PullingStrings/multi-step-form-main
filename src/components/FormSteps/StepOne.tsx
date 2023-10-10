@@ -57,6 +57,7 @@ const StepOne: React.FC = () => {
         onChange={handleChange}
         required
       />
+
       {errors.name && <p>{errors.name}</p>}
 
       <label htmlFor='email'>Email:</label>

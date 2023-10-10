@@ -6,6 +6,13 @@ The useFormContext hook is a convenience function that you can call from any com
 
 import React, { createContext, useContext, useReducer } from "react"
 
+type AddOn = {
+  title: string
+  subtitle: string
+  price: string
+  selected: boolean
+}
+
 type StateType = {
   currentStep: number
   stepOne: {
@@ -14,12 +21,16 @@ type StateType = {
     phone: string
   }
   stepTwo: {
-    plan: "arcade" | "advanced" | "pro"
-    paymentType: "monthly" | "yearly"
+    isYearly: boolean
+    plan: string
+    paymentType: boolean
+    planPrices: {
+      Arcade: { monthly: number; yearly: number }
+      Advanced: { monthly: number; yearly: number }
+      Pro: { monthly: number; yearly: number }
+    }
   }
-  stepThree: {
-    addons: string[]
-  }
+  stepThree: AddOn[]
 }
 
 const initialState: StateType = {
@@ -30,12 +41,35 @@ const initialState: StateType = {
     phone: "e.g. +44 1234567890",
   },
   stepTwo: {
-    plan: "arcade",
-    paymentType: "monthly",
+    plan: "",
+    paymentType: false,
+    planPrices: {
+      Arcade: { monthly: 0.99, yearly: 9.99 },
+      Advanced: { monthly: 1.99, yearly: 19.99 },
+      Pro: { monthly: 2.99, yearly: 29.99 },
+    },
+    isYearly: false,
   },
-  stepThree: {
-    addons: [],
-  },
+  stepThree: [
+    {
+      title: "Online service",
+      subtitle: "Access to multiplayer games",
+      price: "+$1/mo",
+      selected: false,
+    },
+    {
+      title: "Larger storage",
+      subtitle: "Extra 1TB of cloud save",
+      price: "+$2/mo",
+      selected: false,
+    },
+    {
+      title: "Customizable profile",
+      subtitle: "Custom theme on your profile",
+      price: "+$2/mo",
+      selected: false,
+    },
+  ],
 }
 
 type ActionType =
@@ -47,8 +81,14 @@ type ActionType =
   | {
       type: "SET_STEP_TWO"
       payload: {
-        plan: "arcade" | "advanced" | "pro"
-        paymentType: "monthly" | "yearly"
+        plan: string
+        paymentType: false
+        isYearly: boolean
+        planPrices: {
+          Arcade: { monthly: number; yearly: number }
+          Advanced: { monthly: number; yearly: number }
+          Pro: { monthly: number; yearly: number }
+        }
       }
     }
   | { type: "SET_STEP_THREE"; payload: { addons: string[] } }
