@@ -2,10 +2,12 @@
 
 import React, { useState } from "react"
 import { useFormContext } from "../../utils/formContext"
+import StepsSideBar from "../UI/StepsSideBar"
 
 const StepOne: React.FC = () => {
   const [{ stepOne }, dispatch] = useFormContext()
   const [errors, setErrors] = useState<{ [key: string]: string }>({})
+  const stepOneState = 1
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault()
@@ -48,40 +50,43 @@ const StepOne: React.FC = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor='name'>Name:</label>
-      <input
-        id='name'
-        name='name'
-        value={stepOne.name}
-        onChange={handleChange}
-        required
-      />
+    <>
+      <StepsSideBar steps={stepOneState} />
+      <form onSubmit={handleSubmit}>
+        <label htmlFor='name'>Name</label>
+        <input
+          id='name'
+          name='name'
+          value={stepOne.name}
+          onChange={handleChange}
+          required
+        />
 
-      {errors.name && <p>{errors.name}</p>}
+        {errors.name && <p>{errors.name}</p>}
 
-      <label htmlFor='email'>Email:</label>
-      <input
-        id='email'
-        name='email'
-        value={stepOne.email}
-        onChange={handleChange}
-        required
-      />
-      {errors.email && <p>{errors.email}</p>}
+        <label htmlFor='email'>Email Address</label>
+        <input
+          id='email'
+          name='email'
+          value={stepOne.email}
+          onChange={handleChange}
+          required
+        />
+        {errors.email && <p>{errors.email}</p>}
 
-      <label htmlFor='phone'>Phone:</label>
-      <input
-        id='phone'
-        name='phone'
-        value={stepOne.phone}
-        onChange={handleChange}
-        required
-      />
-      {errors.phone && <p>{errors.phone}</p>}
+        <label htmlFor='phone'>Phone Number</label>
+        <input
+          id='phone'
+          name='phone'
+          value={stepOne.phone}
+          onChange={handleChange}
+          required
+        />
+        {errors.phone && <p>{errors.phone}</p>}
 
-      <button type='submit'>Next</button>
-    </form>
+        <button type='submit'>Next</button>
+      </form>
+    </>
   )
 }
 

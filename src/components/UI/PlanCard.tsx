@@ -36,13 +36,21 @@ const PlanCard: React.FC<PlanCardProps> = ({
       type: "SET_STEP_TWO",
       payload: {
         plan: planName,
+        paymentType: false,
         isYearly: isYearly,
         planPrices: selectedPlanPrices,
       },
     })
   }
 
+  // console.log(planPrices[plan])
   const planPrice = planPrices[plan]
+  // const planPrice =
+  //   state.stepTwo.planPrices[
+  //     state.stepTwo.plan as keyof typeof state.stepTwo.planPrices
+  //   ]
+
+  // console.log(planPrice)
 
   return (
     <div

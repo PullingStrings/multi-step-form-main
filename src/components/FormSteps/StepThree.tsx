@@ -24,6 +24,11 @@ const StepThree: React.FC = () => {
     dispatch({ type: "SET_STEP", payload: 4 })
   }
 
+  const backButton = (event: React.MouseEvent) => {
+    event.preventDefault()
+    dispatch({ type: "SET_STEP", payload: 2 })
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -38,7 +43,7 @@ const StepThree: React.FC = () => {
           />
         ))}
       </div>
-
+      <button onClick={backButton}>Back</button>
       <button type='submit'>Next</button>
     </form>
   )

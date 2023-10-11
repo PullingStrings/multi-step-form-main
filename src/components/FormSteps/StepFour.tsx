@@ -4,11 +4,14 @@ import React from "react"
 import { useFormContext } from "../../utils/formContext"
 
 const StepFour: React.FC = () => {
+  // type PlanType = "Arcade" | "Advanced" | "Pro"
+
   const [{ stepOne, stepTwo, stepThree }, dispatch] = useFormContext()
 
   const selectedPlan = stepTwo.plan
   const isYearly = stepTwo.isYearly
-  const selectedPlanPrices = stepTwo.planPrices[selectedPlan]
+  const selectedPlanPrices =
+    stepTwo.planPrices[stepTwo.plan as keyof typeof stepTwo.planPrices]
 
   const price = isYearly
     ? selectedPlanPrices.yearly
@@ -17,7 +20,6 @@ const StepFour: React.FC = () => {
   const calculateTotal = () => {
     // Assuming that each plan and add-on has a price in dollars
     let total = 0
-    console.log(stepTwo)
     // Logic to add up prices based on the selected plan and add-ons
     // For example:
     // if (stepTwo.plan === 'arcade') total += 10;

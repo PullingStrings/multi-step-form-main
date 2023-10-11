@@ -82,7 +82,7 @@ type ActionType =
       type: "SET_STEP_TWO"
       payload: {
         plan: string
-        paymentType: false
+        paymentType: boolean
         isYearly: boolean
         planPrices: {
           Arcade: { monthly: number; yearly: number }
@@ -91,7 +91,7 @@ type ActionType =
         }
       }
     }
-  | { type: "SET_STEP_THREE"; payload: { addons: string[] } }
+  | { type: "SET_STEP_THREE"; payload: AddOn[] }
 
 const FormContext = createContext<[StateType, React.Dispatch<ActionType>]>([
   {} as StateType,
