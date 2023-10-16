@@ -36,9 +36,9 @@ type StateType = {
 const initialState: StateType = {
   currentStep: 1,
   stepOne: {
-    name: "e.g. Stephen King",
-    email: "e.g.stephenking@lorem.com",
-    phone: "e.g. +44 1234567890",
+    name: "",
+    email: "",
+    phone: "",
   },
   stepTwo: {
     plan: "",

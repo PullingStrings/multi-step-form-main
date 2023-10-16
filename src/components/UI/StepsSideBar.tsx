@@ -2,52 +2,74 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import bgSideBarDesktop from "../../../public/images/bg-sidebar-desktop.svg"
 
-const Span = styled.span<{ isActive?: boolean }>`
-  padding: 15px;
+const Span = styled.span<{ $ishighlighted?: boolean }>`
+  padding: 10px;
   margin: 10px;
-  color: ${(props) => (props.isActive ? "black" : "white")};
+  color: ${(props) => (props.$ishighlighted ? "black" : "white")};
   background-color: ${(props) =>
-    props.isActive ? "hsl(217, 100%, 97%)" : "transparent"};
-  border-radius: 100%;
-  border: 1px solid ${(props) => (props.isActive ? "#483eff" : "white")};
+    props.$ishighlighted ? "hsl(217, 100%, 97%)" : "transparent"};
+  border-radius: 50px;
+  border: 1px solid ${(props) => (props.$ishighlighted ? "#483eff" : "white")};
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 10px;
+  width: 40px;
+`
+
+const ContentElementContainer = styled.div`
+  font-size: 12px;
+  p,
+  h2 {
+    text-transform: uppercase;
+  }
+  h2 {
+    font-size: 14px;
+  }
 `
 const Container = styled.div`
   background-image: url(${bgSideBarDesktop.src});
-  background-size: cover; /* or you can use 'contain' */
+  background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
+  // background-position: center;
   padding: 10px;
+  border-radius: 10px;
+  width: 50%;
 `
 const StepsDiv = styled.div`
   display: flex;
   color: white;
+  align-items: center;
 `
 const StepsSideBar = (stepNumber: { steps: number }) => {
   return (
     <Container>
       <StepsDiv>
-        <Span isActive={stepNumber.steps === 1 ? true : false}>1</Span>
-        <h2>Step 1</h2>
-        <p>Your Info</p>
+        <Span $ishighlighted={stepNumber.steps === 1 ? true : false}>1</Span>
+        <ContentElementContainer>
+          <p>Step 1</p>
+          <h2>Your Info</h2>
+        </ContentElementContainer>
       </StepsDiv>
       <StepsDiv>
-        <Span isActive={stepNumber.steps === 2 ? true : false}>2</Span>
-        <h2>Step 2</h2>
-        <p>Select Plan</p>
+        <Span $ishighlighted={stepNumber.steps === 2 ? true : false}>2</Span>
+        <ContentElementContainer>
+          <p>Step 2</p>
+          <h2>Select Plan</h2>
+        </ContentElementContainer>
       </StepsDiv>
       <StepsDiv>
-        <Span isActive={stepNumber.steps === 3 ? true : false}>3</Span>
-        <h2>Step 3</h2>
-        <p>Add-ons</p>
+        <Span $ishighlighted={stepNumber.steps === 3 ? true : false}>3</Span>
+        <ContentElementContainer>
+          <p>Step 3</p>
+          <h2>Add-ons</h2>
+        </ContentElementContainer>
       </StepsDiv>
       <StepsDiv>
-        <Span isActive={stepNumber.steps === 4 ? true : false}>4</Span>
-        <h2>Step 4</h2>
-        <p>Summary</p>
+        <Span $ishighlighted={stepNumber.steps === 4 ? true : false}>4</Span>
+        <ContentElementContainer>
+          <p>Step 4</p>
+          <h2>Summary</h2>
+        </ContentElementContainer>
       </StepsDiv>
     </Container>
   )

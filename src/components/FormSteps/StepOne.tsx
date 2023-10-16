@@ -1,8 +1,36 @@
-// components/StepOne.tsx
-
 import React, { useState } from "react"
 import { useFormContext } from "../../utils/formContext"
 import StepsSideBar from "../UI/StepsSideBar"
+import styled from "styled-components"
+import iconArcade from "../../../public/images/icon-arcade.svg"
+import iconAdvanced from "../../../public/images/icon-advanced.svg"
+import iconPro from "../../../public/images/assets/icon-pro.svg"
+
+const FormContainer = styled.div`
+  padding: 50px 20px 50px 0px;
+  margin: 20px;
+`
+const CustomErrors = styled.div`
+  display: flex;
+  justify-content: space-between;
+  p {
+    font-weight: bold;
+    color: #ef3232;
+    font-size: 12px;
+  }
+`
+const NextBtn = styled.button`
+  background-color: hsl(213, 96%, 18%);
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  position: absolute;
+  bottom: 20px;
+  right: 60px;
+`
 
 const StepOne: React.FC = () => {
   const [{ stepOne }, dispatch] = useFormContext()
@@ -36,7 +64,7 @@ const StepOne: React.FC = () => {
     // Check if fields are empty
     if (!stepOne.name.trim()) newErrors.name = "Name is required"
     if (!stepOne.email.trim()) newErrors.email = "Email is required"
-    if (!stepOne.phone.trim()) newErrors.phone = "Phone number is required"
+    if (!stepOne.phone.trim()) newErrors.phone = "This field is required"
 
     // Check if email is valid
     if (
@@ -52,40 +80,49 @@ const StepOne: React.FC = () => {
   return (
     <>
       <StepsSideBar steps={stepOneState} />
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='name'>Name</label>
-        <input
-          id='name'
-          name='name'
-          value={stepOne.name}
-          onChange={handleChange}
-          required
-        />
+      <FormContainer>
+        <h1>Personal info</h1>
+        <p>Please provide your name, email address, and phone number.</p>
+        <form className='multi-step-form' onSubmit={handleSubmit}>
+          <CustomErrors>
+            <label htmlFor='name'>Name</label>
+            {errors.name && <p>{errors.name}</p>}
+          </CustomErrors>
+          <input
+            id='name'
+            placeholder='Vanessa Mint'
+            name='name'
+            value={stepOne.name}
+            onChange={handleChange}
+          />
 
-        {errors.name && <p>{errors.name}</p>}
+          <CustomErrors>
+            <label htmlFor='email'>Email Address</label>
+            {errors.email && <p>{errors.email}</p>}
+          </CustomErrors>
 
-        <label htmlFor='email'>Email Address</label>
-        <input
-          id='email'
-          name='email'
-          value={stepOne.email}
-          onChange={handleChange}
-          required
-        />
-        {errors.email && <p>{errors.email}</p>}
+          <input
+            id='email'
+            placeholder='Vanessamint@'
+            name='email'
+            value={stepOne.email}
+            onChange={handleChange}
+          />
 
-        <label htmlFor='phone'>Phone Number</label>
-        <input
-          id='phone'
-          name='phone'
-          value={stepOne.phone}
-          onChange={handleChange}
-          required
-        />
-        {errors.phone && <p>{errors.phone}</p>}
-
-        <button type='submit'>Next</button>
-      </form>
+          <CustomErrors>
+            <label htmlFor='phone'>Phone Number</label>
+            {errors.phone && <p>{errors.phone}</p>}
+          </CustomErrors>
+          <input
+            id='phone'
+            placeholder='e.g. +1 234 567 890'
+            name='phone'
+            value={stepOne.phone}
+            onChange={handleChange}
+          />
+          <NextBtn type='submit'>Next Step</NextBtn>
+        </form>
+      </FormContainer>
     </>
   )
 }
