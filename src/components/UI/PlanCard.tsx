@@ -2,6 +2,21 @@
 
 import React from "react"
 import { useFormContext } from "../../utils/formContext" // Adjust the import to match your actual file structure
+import Image from "next/image"
+import styled from "styled-components"
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+  transition: all 0.3s ease-in-out;
+`
+
+const Icons = styled``
 
 type PlanCardProps = {
   plan: string
@@ -13,6 +28,11 @@ type PlanCardProps = {
     Advanced: { monthly: number; yearly: number }
     Pro: { monthly: number; yearly: number }
   }
+  icons: {
+    Arcade: string
+    Advanced: string
+    Pro: string
+  }
 }
 
 const PlanCard: React.FC<PlanCardProps> = ({
@@ -21,6 +41,7 @@ const PlanCard: React.FC<PlanCardProps> = ({
   onSelectPlan,
   isYearly,
   planPrices,
+  icons,
 }) => {
   const [state, dispatch] = useFormContext()
   const isSelected = plan === selectedPlan
@@ -53,18 +74,28 @@ const PlanCard: React.FC<PlanCardProps> = ({
   // console.log(planPrice)
 
   return (
-    <div
+    <Container
       onClick={() => {
         onSelectPlan(plan)
         handleClick(plan)
       }}
-      style={{ border: isSelected ? "2px solid #000" : "none" }}
+      style={{ background: isSelected ? "purlple" : "none" }}
     >
-      <div>{plan}</div>
+      <Image
+        src={icons}
+        alt={plan}
+        style={{
+          marginBottom: "20px",
+        }}
+      />
+
       <div>
-        {isYearly ? `$${planPrice?.yearly}/yr` : `$${planPrice?.monthly}/mo`}
+        <h4>{plan}</h4>
+        <p>
+          {isYearly ? `$${planPrice?.yearly}/yr` : `$${planPrice?.monthly}/mo`}
+        </p>
       </div>
-    </div>
+    </Container>
   )
 }
 

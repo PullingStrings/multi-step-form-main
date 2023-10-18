@@ -28,7 +28,9 @@ export const GlobalStyles = createGlobalStyle`
   flex-direction: column;
   width: 100%;
   margin-top: 35px;
-  justify-content: space-between;
+  position: relative;
+  justify-content: start;
+  height: 100%;
     {
       flex: 1;
     }

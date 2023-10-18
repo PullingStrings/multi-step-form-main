@@ -2,9 +2,6 @@ import React, { useState } from "react"
 import { useFormContext } from "../../utils/formContext"
 import StepsSideBar from "../UI/StepsSideBar"
 import styled from "styled-components"
-import iconArcade from "../../../public/images/icon-arcade.svg"
-import iconAdvanced from "../../../public/images/icon-advanced.svg"
-import iconPro from "../../../public/images/assets/icon-pro.svg"
 
 const FormContainer = styled.div`
   padding: 50px 20px 50px 0px;
