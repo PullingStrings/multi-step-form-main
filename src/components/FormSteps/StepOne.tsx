@@ -4,8 +4,8 @@ import StepsSideBar from "../UI/StepsSideBar"
 import styled from "styled-components"
 
 const FormContainer = styled.div`
-  padding: 50px 20px 50px 0px;
-  margin: 20px;
+  position: relative;
+  width: 50%;
 `
 const CustomErrors = styled.div`
   display: flex;
@@ -25,8 +25,8 @@ const NextBtn = styled.button`
   cursor: pointer;
   font-weight: bold;
   position: absolute;
-  bottom: 20px;
-  right: 60px;
+  bottom: 0px;
+  right: 0px;
 `
 
 const StepOne: React.FC = () => {
@@ -78,8 +78,10 @@ const StepOne: React.FC = () => {
     <>
       <StepsSideBar steps={stepOneState} />
       <FormContainer>
-        <h1>Personal info</h1>
-        <p>Please provide your name, email address, and phone number.</p>
+        <div className='titles'>
+          <h1>Personal info</h1>
+          <p>Please provide your name, email address, and phone number.</p>
+        </div>
         <form className='multi-step-form' onSubmit={handleSubmit}>
           <CustomErrors>
             <label htmlFor='name'>Name</label>
@@ -87,7 +89,7 @@ const StepOne: React.FC = () => {
           </CustomErrors>
           <input
             id='name'
-            placeholder='Vanessa Mint'
+            placeholder='e.g. Stephen King'
             name='name'
             value={stepOne.name}
             onChange={handleChange}
@@ -100,7 +102,7 @@ const StepOne: React.FC = () => {
 
           <input
             id='email'
-            placeholder='Vanessamint@'
+            placeholder='e.g. stephenking@lorem.com'
             name='email'
             value={stepOne.email}
             onChange={handleChange}

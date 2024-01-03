@@ -44,9 +44,9 @@ const initialState: StateType = {
     plan: "",
     paymentType: false,
     planPrices: {
-      Arcade: { monthly: 0.99, yearly: 9.99 },
-      Advanced: { monthly: 1.99, yearly: 19.99 },
-      Pro: { monthly: 2.99, yearly: 29.99 },
+      Arcade: { monthly: 9, yearly: 90 },
+      Advanced: { monthly: 12, yearly: 120 },
+      Pro: { monthly: 15, yearly: 150 },
     },
     isYearly: false,
   },

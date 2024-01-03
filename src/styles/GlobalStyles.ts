@@ -23,17 +23,16 @@ export const GlobalStyles = createGlobalStyle`
    color: var(--cool-gray);s
   }
 
+  .titles{
+    padding: 20px;
+  }
+
   .multi-step-form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 35px;
-  position: relative;
-  justify-content: start;
-  height: 100%;
-    {
-      flex: 1;
-    }
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    justify-content: start;
   }
 
   input {
@@ -42,6 +41,8 @@ export const GlobalStyles = createGlobalStyle`
    margin-top: 5px;
    border-radius: 5px;
    border: 1px solid var(--cool-gray);
+   font-weight: bold;
+   color: #eee;
   }
 
   /* Define your color variables */

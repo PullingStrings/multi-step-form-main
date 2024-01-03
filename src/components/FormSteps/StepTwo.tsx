@@ -11,8 +11,8 @@ import iconAdvanced from "../../../public/images/icon-advanced.svg"
 import iconPro from "../../../public/images/icon-pro.svg"
 
 const FormContainer = styled.div`
-  padding: 50px 20px 50px 0px;
-  margin: 20px;
+  position: relative;
+  width: 50%;
 `
 
 const IconsContainer = styled.div`
@@ -33,8 +33,8 @@ const NextBtn = styled.button`
 `
 
 const BackBtn = styled.button`
-  background-color: hsl(213, 96%, 18%);
-  color: #fff;
+  background-color: #fff;
+  color: hsl(231, 11%, 63%);
   padding: 15px 25px;
   border-radius: 5px;
   border: none;
@@ -79,8 +79,11 @@ const StepTwo: React.FC = () => {
     <>
       <StepsSideBar steps={stepTwoState} />
       <FormContainer>
-        <h1>Select your plan</h1>
-        <p>You have the option of monthly or yearly billing.</p>
+        <div className='titles'>
+          <h1>Select your plan</h1>
+          <p>You have the option of monthly or yearly billing.</p>
+        </div>
+
         <form className='multi-step-form' onSubmit={handleSubmit}>
           <IconsContainer>
             <PlanCard
@@ -114,8 +117,8 @@ const StepTwo: React.FC = () => {
             onToggle={handleTogglePayment}
           />
 
-          <BackBtn onClick={backButton}>Back</BackBtn>
-          <NextBtn type='submit'>Next</NextBtn>
+          <BackBtn onClick={backButton}> Go Back</BackBtn>
+          <NextBtn type='submit'>Next Step</NextBtn>
         </form>
       </FormContainer>
     </>

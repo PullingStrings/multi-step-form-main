@@ -28,14 +28,16 @@ const ContentElementContainer = styled.div`
 `
 const Container = styled.div`
   background-image: url(${bgSideBarDesktop.src});
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
-  // background-position: center;
+  background-position: center;
   padding: 10px;
   border-radius: 10px;
-  width: 50%;
+  width: 274px;
+  height: 568px;
 `
 const StepsDiv = styled.div`
+  padding: 0px 20px 15px 20px;
   display: flex;
   color: white;
   align-items: center;

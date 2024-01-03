@@ -14,9 +14,8 @@ const Container = styled.div`
   cursor: pointer;
   margin: 5px;
   transition: all 0.3s ease-in-out;
+  width: 100%;
 `
-
-const Icons = styled``
 
 type PlanCardProps = {
   plan: string
@@ -48,9 +47,9 @@ const PlanCard: React.FC<PlanCardProps> = ({
 
   const handleClick = (planName: string) => {
     const selectedPlanPrices = {
-      Arcade: { monthly: 0.99, yearly: 9.99 },
-      Advanced: { monthly: 1.99, yearly: 19.99 },
-      Pro: { monthly: 2.99, yearly: 29.99 },
+      Arcade: { monthly: 9, yearly: 90 },
+      Advanced: { monthly: 12, yearly: 120 },
+      Pro: { monthly: 15, yearly: 150 },
     }
 
     dispatch({
@@ -79,20 +78,43 @@ const PlanCard: React.FC<PlanCardProps> = ({
         onSelectPlan(plan)
         handleClick(plan)
       }}
-      style={{ background: isSelected ? "purlple" : "none" }}
+      style={{
+        background: isSelected ? "#f0f6ff" : "none",
+        border: isSelected ? "1px solid #ae2aff" : "1px solid #ccc",
+      }}
     >
       <Image
         src={icons}
         alt={plan}
         style={{
-          marginBottom: "20px",
+          marginBottom: "40px",
         }}
       />
 
       <div>
-        <h4>{plan}</h4>
-        <p>
+        <h4
+          style={{
+            paddingBottom: "5px",
+            color: "hsl(213, 96%, 18%)",
+          }}
+        >
+          {plan}
+        </h4>
+        <p
+          style={{
+            paddingBottom: "5px",
+          }}
+        >
           {isYearly ? `$${planPrice?.yearly}/yr` : `$${planPrice?.monthly}/mo`}
+        </p>
+        <p
+          style={{
+            color: "hsl(213, 96%, 18%)",
+            display: isYearly ? "block" : "none",
+            paddingBottom: "5px",
+          }}
+        >
+          2 months free
         </p>
       </div>
     </Container>

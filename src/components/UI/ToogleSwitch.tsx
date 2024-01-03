@@ -10,13 +10,31 @@ type ToggleSwitchProps = {
 const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ isYearly, onToggle }) => (
   <div
     onClick={onToggle}
-    style={{ display: "inline-flex", alignItems: "center", cursor: "pointer" }}
+    style={{
+      display: "inline-flex",
+      alignItems: "center",
+      cursor: "pointer",
+      margin: "20px 0px",
+      padding: "5px 0px",
+      background: "#d6d9e6",
+      borderRadius: "3px",
+      justifyContent: "center",
+    }}
   >
-    <div style={{ padding: "10px" }}>Monthly</div>
+    <div style={{ padding: "10px" }}>
+      <p
+        style={{
+          color: isYearly ? "grey" : "#032a5a",
+          fontWeight: isYearly ? "normal" : "bold",
+        }}
+      >
+        Monthly
+      </p>
+    </div>
     <div
       style={{
         position: "relative",
-        background: isYearly ? "#000" : "#ddd",
+        background: isYearly ? "#000" : "#032a5a",
         borderRadius: "50px",
         width: "50px",
         height: "25px",
@@ -35,7 +53,16 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ isYearly, onToggle }) => (
         }}
       />
     </div>
-    <div style={{ padding: "10px" }}>Yearly</div>
+    <div style={{ padding: "10px" }}>
+      <p
+        style={{
+          color: isYearly ? "#032a5a" : "grey",
+          fontWeight: isYearly ? "bold" : "normal",
+        }}
+      >
+        Yearly
+      </p>
+    </div>
   </div>
 )
 

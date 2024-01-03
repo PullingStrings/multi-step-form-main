@@ -23,6 +23,8 @@ const StepsContainer = styled.div`
   background: white;
   gap: 25px;
   border-radius: 10px;
+  width: 100%;
+  justify-content: center;
 `
 
 export default function Home() {
