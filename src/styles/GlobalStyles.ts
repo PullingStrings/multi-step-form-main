@@ -19,8 +19,12 @@ export const GlobalStyles = createGlobalStyle`
     background: var(--alabaster);
   }
 
+  h1 {
+    margin-bottom: 5px;
+  }
+
   p {
-   color: var(--cool-gray);s
+   color: var(--cool-gray);
   }
 
   .titles{

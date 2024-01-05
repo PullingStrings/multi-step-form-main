@@ -1,11 +1,18 @@
 // components/AddOnCard.tsx
 import styled from "styled-components"
+import { useFormContext } from "../../utils/formContext"
 
-const CardContainer = styled.div`
+const CardContainer = styled.div<{ $border?: string }>`
   display: flex;
   flex-direction: row;
-  margin: 10px 0px;
+  margin: 15px 0px;
   align-items: center;
+  padding: 20px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  :last-child {
+    margin-left: auto;
+  }
 `
 
 const Input = styled.input`
@@ -15,7 +22,7 @@ const Input = styled.input`
   margin-right: 20px;
   border-radius: 5px;
   font-weight: bold;
-  color: #eee;
+  color: #9699ab;
   width: 20px;
   height: 20px;
 `
@@ -26,7 +33,12 @@ const Title = styled.p`
 `
 
 const SubTitle = styled.p`
-  color: grey;
+  color: #9699ab;
+  padding-top: 5px;
+`
+
+const Price = styled.p`
+  color: hsl(213, 96%, 18%);
 `
 
 import React from "react"
@@ -34,7 +46,10 @@ import React from "react"
 type AddOnCardProps = {
   title: string
   subtitle: string
-  price: string
+  price: {
+    monthly: string
+    yearly: string
+  }
   selected: boolean
   onToggle: () => void
 }
@@ -46,10 +61,15 @@ const AddOnCard: React.FC<AddOnCardProps> = ({
   selected,
   onToggle,
 }) => {
+  const [{ stepTwo }, dispatch] = useFormContext()
+  const isYearly = stepTwo.isYearly
   return (
     <CardContainer
       onClick={onToggle}
-      style={{ border: selected ? "2px solid #000" : "none" }}
+      style={{
+        border: selected ? "1px solid #473dff" : "1px solid #9699ab",
+        backgroundColor: selected ? "#483eff24" : "#fff",
+      }}
     >
       <Input type='checkbox' checked={selected} onChange={onToggle} />
       <div>
@@ -61,7 +81,9 @@ const AddOnCard: React.FC<AddOnCardProps> = ({
         </div>
       </div>
       <div>
-        <div>{price}</div>
+        <div>
+          <Price>{isYearly ? price.yearly : price.monthly}</Price>
+        </div>
       </div>
     </CardContainer>
   )

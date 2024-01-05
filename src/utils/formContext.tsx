@@ -9,7 +9,10 @@ import React, { createContext, useContext, useReducer } from "react"
 type AddOn = {
   title: string
   subtitle: string
-  price: string
+  price: {
+    monthly: string
+    yearly: string
+  }
   selected: boolean
 }
 
@@ -54,19 +57,28 @@ const initialState: StateType = {
     {
       title: "Online service",
       subtitle: "Access to multiplayer games",
-      price: "+$1/mo",
+      price: { monthly: "+$1/mo", yearly: "+$10/yr" } as {
+        monthly: string
+        yearly: string
+      },
       selected: false,
     },
     {
       title: "Larger storage",
       subtitle: "Extra 1TB of cloud save",
-      price: "+$2/mo",
+      price: { monthly: "+$2/mo", yearly: "+$20/yr" } as {
+        monthly: string
+        yearly: string
+      },
       selected: false,
     },
     {
       title: "Customizable profile",
       subtitle: "Custom theme on your profile",
-      price: "+$2/mo",
+      price: { monthly: "+$2/mo", yearly: "+$20/yr" } as {
+        monthly: string
+        yearly: string
+      },
       selected: false,
     },
   ],

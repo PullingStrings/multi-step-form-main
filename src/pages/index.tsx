@@ -3,6 +3,7 @@ import StepOne from "@/components/FormSteps/StepOne"
 import StepTwo from "@/components/FormSteps/StepTwo"
 import StepThree from "@/components/FormSteps/StepThree"
 import StepFour from "@/components/FormSteps/StepFour"
+import StepThankYou from "@/components/FormSteps/StepThankYou"
 import { useFormContext } from "@/utils/formContext"
 import GlobalStyles from "@/styles/GlobalStyles"
 import styled from "styled-components"
@@ -45,6 +46,7 @@ export default function Home() {
             {currentStep === 2 && <StepTwo />}
             {currentStep === 3 && <StepThree />}
             {currentStep === 4 && <StepFour />}
+            {currentStep === 5 && <StepThankYou />}
           </StepsContainer>
         </Container>
       )}

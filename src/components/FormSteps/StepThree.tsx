@@ -69,7 +69,7 @@ const StepThree: React.FC = () => {
       <FormContainer>
         <div className='titles'>
           <h1>Pick add-ons</h1>
-          <p>Add-ons help enhance your gaming experience..</p>
+          <p>Add-ons help enhance your gaming experience.</p>
         </div>
         <form className='multi-step-form' onSubmit={handleSubmit}>
           <div>
