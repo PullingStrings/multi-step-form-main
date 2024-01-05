@@ -15,14 +15,12 @@ const InfoContainer = styled.div`
   border-radius: 5px;
   margin: 10px 0px;
 `
-
 const SummaryContainer = styled.div`
   padding: 15px;
   background-color: #adbeff40;
   border-radius: 5px;
   margin: 10px 0px;
 `
-
 const SelectedPlanContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -35,7 +33,6 @@ const SelectedPlanContainer = styled.div`
     color: #02295a;
   }
 `
-
 const AddOnsSummaryContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -45,7 +42,6 @@ const AddOnsSummaryContainer = styled.div`
 const AddOnsContainer = styled.div`
   padding: 15px 0px;
 `
-
 const TotalContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -58,13 +54,12 @@ const TotalContainer = styled.div`
     color: #02295a;
   }
 `
-
 const ChangeButton = styled.div`
   border: none;
   text-decoration: underline;
   color: #9699ab;
+  cursor: pointer;
 `
-
 const ConfirmBtn = styled.button`
   background-color: hsl(213, 96%, 18%);
   color: #fff;
@@ -77,7 +72,6 @@ const ConfirmBtn = styled.button`
   bottom: 0px;
   right: 0px;
 `
-
 const BackBtn = styled.button`
   background-color: #fff;
   color: hsl(231, 11%, 63%);
@@ -107,12 +101,7 @@ const StepFour: React.FC = () => {
     : selectedPlanPrices.monthly
 
   const calculateTotal = () => {
-    // Assuming that each plan and add-on has a price in dollars
     let total = 0
-    // Logic to add up prices based on the selected plan and add-ons
-    // For example:
-    // if (stepTwo.plan === 'arcade') total += 10;
-    // if (stepTwo.isYearly) total *= 12;
 
     stepThree.forEach((addOn) => {
       if (addOn.selected) {
@@ -121,12 +110,9 @@ const StepFour: React.FC = () => {
           ? parseInt(addOn.price.yearly.replace(/[^0-9]/g, ""))
           : parseInt(addOn.price.monthly.replace(/[^0-9]/g, ""))
         total += addOnPrices
+        console.log(`Total:${total} Add-Ons:${addOnPrices}`)
       }
     })
-
-    if (stepTwo.isYearly) {
-      total += 12
-    }
 
     return total + price
   }
@@ -176,7 +162,6 @@ const StepFour: React.FC = () => {
                 </strong>
               </div>
             </SelectedPlanContainer>
-
             <AddOnsContainer>
               {stepThree.map(
                 (addOn, index) =>
@@ -189,7 +174,6 @@ const StepFour: React.FC = () => {
               )}
             </AddOnsContainer>
           </SummaryContainer>
-
           <TotalContainer>
             <div>
               <p>Total (per {isYearly ? "year" : "month"})</p>
@@ -200,7 +184,6 @@ const StepFour: React.FC = () => {
               </span>
             </div>
           </TotalContainer>
-
           <BackBtn onClick={backButton}>Go Back</BackBtn>
           <ConfirmBtn type='submit'>Confrim</ConfirmBtn>
         </form>

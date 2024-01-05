@@ -21,6 +21,7 @@ export const GlobalStyles = createGlobalStyle`
 
   h1 {
     margin-bottom: 5px;
+    color: var(--marine-blue);
   }
 
   p {

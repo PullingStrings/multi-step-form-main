@@ -35,6 +35,12 @@ const Container = styled.div`
   border-radius: 10px;
   width: 274px;
   height: 568px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    display: flex;
+  }
 `
 const StepsDiv = styled.div`
   padding: 0px 20px 15px 20px;

@@ -26,6 +26,10 @@ const StepsContainer = styled.div`
   border-radius: 10px;
   width: 100%;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 
 export default function Home() {
