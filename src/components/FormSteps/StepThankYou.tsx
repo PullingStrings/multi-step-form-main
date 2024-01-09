@@ -5,11 +5,10 @@ import Image from "next/image"
 
 const MainContainer = styled.div`
   display: flex;
-  width: 50%;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50px 10px;
 
   h1 {
     margin: 20px 0px;
@@ -29,7 +28,12 @@ const StepThankYou: React.FC = () => {
   return (
     <>
       <StepsSideBar steps={stepFourState} />
-      <div className='form-main-container'>
+      <div
+        className='form-main-container'
+        style={{
+          display: "flex",
+        }}
+      >
         <MainContainer>
           <Image
             sizes='100vw'
