@@ -98,6 +98,14 @@ Mulit Step Form Main is a web application built with Next.js and TypeScript, fea
 
 I'd like to add a bit more animations. I just thing front-end development has become a bit static, we chasing speed. But theres no flow, so maybe later I'll add some animated bits
 
+## Cavets
+
+The phone number you can use these combonations.
+`01234567890
+01234 567 890
++441234567890
++44 1234 567 890`
+
 ## License
 
 [Specify the project's license if applicable.]

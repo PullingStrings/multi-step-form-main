@@ -54,6 +54,12 @@ const StepOne: React.FC = () => {
     ) {
       newErrors.email = "Please enter a valid email"
     }
+    if (
+      stepOne.phone.trim() &&
+      !/^(?:0|\+?44)(?:\d\s?){9,10}$/.test(stepOne.phone)
+    ) {
+      newErrors.phone = "Please enter a valid UK phone number"
+    }
 
     return newErrors
   }
