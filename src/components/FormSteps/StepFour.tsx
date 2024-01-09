@@ -5,10 +5,6 @@ import { useFormContext } from "../../utils/formContext"
 import StepsSideBar from "../UI/StepsSideBar"
 import styled from "styled-components"
 
-const FormContainer = styled.div`
-  position: relative;
-  width: 50%;
-`
 const InfoContainer = styled.div`
   padding: 10px;
   background-color: #adbeff40;
@@ -32,6 +28,11 @@ const SelectedPlanContainer = styled.div`
   strong {
     color: #02295a;
   }
+
+  @media (max-width: 768px) {
+    padding-bottom: 10px;
+    padding-top: 5px;
+  }
 `
 const AddOnsSummaryContainer = styled.div`
   display: flex;
@@ -41,6 +42,10 @@ const AddOnsSummaryContainer = styled.div`
 `
 const AddOnsContainer = styled.div`
   padding: 15px 0px;
+
+  @media (max-width: 768px) {
+    padding: 5px 0px;
+  }
 `
 const TotalContainer = styled.div`
   display: flex;
@@ -59,30 +64,6 @@ const ChangeButton = styled.div`
   text-decoration: underline;
   color: #9699ab;
   cursor: pointer;
-`
-const ConfirmBtn = styled.button`
-  background-color: hsl(213, 96%, 18%);
-  color: #fff;
-  padding: 15px 25px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-`
-const BackBtn = styled.button`
-  background-color: #fff;
-  color: hsl(231, 11%, 63%);
-  padding: 15px 25px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
 `
 
 const StepFour: React.FC = () => {
@@ -136,18 +117,18 @@ const StepFour: React.FC = () => {
   return (
     <>
       <StepsSideBar steps={setFourState} />
-      <FormContainer>
+      <div className='form-main-container'>
+        <div className='titles'>
+          <h1>Finishing up</h1>
+          <p>Double-check everything looks OK before confiming.</p>
+        </div>
         <form className='multi-step-form' onSubmit={handleSubmit}>
-          <div className='titles'>
-            <h1>Finishing up</h1>
-            <p>Double-check everything looks OK before confiming.</p>
-            <InfoContainer>
-              <h3>Your Information:</h3>
-              <p>Name: {stepOne.name}</p>
-              <p>Email: {stepOne.email}</p>
-              <p>Phone: {stepOne.phone}</p>
-            </InfoContainer>
-          </div>
+          <InfoContainer>
+            <h3>Your Information:</h3>
+            <p>Name: {stepOne.name}</p>
+            <p>Email: {stepOne.email}</p>
+            <p>Phone: {stepOne.phone}</p>
+          </InfoContainer>
           <SummaryContainer>
             <SelectedPlanContainer>
               <div>
@@ -184,10 +165,14 @@ const StepFour: React.FC = () => {
               </span>
             </div>
           </TotalContainer>
-          <BackBtn onClick={backButton}>Go Back</BackBtn>
-          <ConfirmBtn type='submit'>Confrim</ConfirmBtn>
+          <button className='back-button' onClick={backButton}>
+            Go Back
+          </button>
+          <button className='next-button' type='submit'>
+            Confrim
+          </button>
         </form>
-      </FormContainer>
+      </div>
     </>
   )
 }

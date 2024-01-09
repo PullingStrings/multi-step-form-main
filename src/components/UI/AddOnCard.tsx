@@ -13,6 +13,10 @@ const CardContainer = styled.div<{ $border?: string }>`
   :last-child {
     margin-left: auto;
   }
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
 `
 
 const Input = styled.input`
@@ -35,6 +39,10 @@ const Title = styled.p`
 const SubTitle = styled.p`
   color: #9699ab;
   padding-top: 5px;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
 `
 
 const Price = styled.p`

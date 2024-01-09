@@ -6,37 +6,6 @@ import AddOnCard from "../UI/AddOnCard"
 import StepsSideBar from "../UI/StepsSideBar"
 import styled from "styled-components"
 
-const FormContainer = styled.div`
-  position: relative;
-  width: 50%;
-`
-
-const NextBtn = styled.button`
-  background-color: hsl(213, 96%, 18%);
-  color: #fff;
-  padding: 15px 25px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-`
-
-const BackBtn = styled.button`
-  background-color: #fff;
-  color: hsl(231, 11%, 63%);
-  padding: 15px 25px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-`
-
 const StepThree: React.FC = () => {
   const [{ stepThree }, dispatch] = useFormContext()
   const stepThreeState = 3
@@ -66,7 +35,7 @@ const StepThree: React.FC = () => {
   return (
     <>
       <StepsSideBar steps={stepThreeState} />
-      <FormContainer>
+      <div className='form-main-container'>
         <div className='titles'>
           <h1>Pick add-ons</h1>
           <p>Add-ons help enhance your gaming experience.</p>
@@ -84,10 +53,14 @@ const StepThree: React.FC = () => {
               />
             ))}
           </div>
-          <BackBtn onClick={backButton}>Go Back</BackBtn>
-          <NextBtn type='submit'>Next Step</NextBtn>
+          <button className='back-button' onClick={backButton}>
+            Go Back
+          </button>
+          <button className='next-button' type='submit'>
+            Next Step
+          </button>
         </form>
-      </FormContainer>
+      </div>
     </>
   )
 }

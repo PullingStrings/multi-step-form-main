@@ -16,7 +16,7 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Ubuntu', sans-serif;
     font-weight: 400;
     font-size: 16px;
-    background: var(--alabaster);
+    background: #eef5ff;
   }
 
   h1 {
@@ -26,10 +26,40 @@ export const GlobalStyles = createGlobalStyle`
 
   p {
    color: var(--cool-gray);
+   font-size: 16px;
+
+   @media (max-width: 768px) {
+    font-size: 14px;
+
+   }
   }
+
+  p.error-message {
+    display: none;
+  }
+  p.error-message.show {
+    display: block;
+    color: red;
+    animation: bounce 2s ;
+  }
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
 
   .titles{
     padding: 20px;
+
+    @media (max-width: 768px) {
+      padding: 10px 20px
+    }
   }
 
   .multi-step-form {
@@ -38,6 +68,23 @@ export const GlobalStyles = createGlobalStyle`
     width: 100%;
     padding: 20px;
     justify-content: start;
+
+    @media (max-width: 768px) {
+      padding: 10px 20px
+    }
+  }
+
+  .form-main-container {
+    position: relative;
+    width: 60%;
+
+    @media (max-width: 768px) {
+      width: 90%;
+      bottom: 95px;
+      background: white;
+      margin: 20px;
+      border-radius: 5px;
+    }
   }
 
   input {
@@ -47,8 +94,52 @@ export const GlobalStyles = createGlobalStyle`
    border-radius: 5px;
    border: 1px solid var(--cool-gray);
    font-weight: bold;
-   color: #eee;
+   color: #000;
+
+   @media (max-width: 768px) {
+    margin-bottom: 15px;
+   }
   }
+
+  .next-button {
+    background-color: hsl(213, 96%, 18%);
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+
+    @media (max-width: 768px) {
+      bottom: -170px;
+    }
+  }
+
+  .next-button.disabled {
+    background-color: hsl(231, 11%, 63%);
+  }
+
+
+  .back-button {
+    background-color: #fff;
+    color: hsl(231, 11%, 63%);
+    padding: 15px 25px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+
+     @media (max-width: 768px) {
+      bottom: -170px;
+    }
+  }
+
 
   /* Define your color variables */
   :root {

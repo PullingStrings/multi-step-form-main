@@ -16,19 +16,27 @@ const Container = styled.div`
   max-width: 1440px;
   margin: 0 auto;
   border-radius: 10px;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `
 const StepsContainer = styled.div`
   display: flex;
   padding: 20px;
   margin: 20px;
-  background: white;
   gap: 25px;
+  background: #fff;
   border-radius: 10px;
   width: 100%;
-  justify-content: center;
-
+  // justify-content: center;
+  max-width: 768px;
   @media (max-width: 768px) {
+    background: #bee1ff;
     flex-direction: column;
+    padding: 0;
+    margin: 0;
+    gap: 0;
   }
 `
 

@@ -10,39 +10,12 @@ import iconArcade from "../../../public/images/icon-arcade.svg"
 import iconAdvanced from "../../../public/images/icon-advanced.svg"
 import iconPro from "../../../public/images/icon-pro.svg"
 
-const FormContainer = styled.div`
-  position: relative;
-  width: 50%;
-`
-
 const IconsContainer = styled.div`
   display: flex;
-`
 
-const NextBtn = styled.button`
-  background-color: hsl(213, 96%, 18%);
-  color: #fff;
-  padding: 15px 25px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-`
-
-const BackBtn = styled.button`
-  background-color: #fff;
-  color: hsl(231, 11%, 63%);
-  padding: 15px 25px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 
 const StepTwo: React.FC = () => {
@@ -75,13 +48,21 @@ const StepTwo: React.FC = () => {
     dispatch({ type: "SET_STEP", payload: 1 })
   }
 
+  const pleaseSelectPlanErr = (event: React.MouseEvent) => {
+    event.preventDefault()
+    document.querySelector(".error-message")?.classList.add("show")
+  }
+
   return (
     <>
       <StepsSideBar steps={stepTwoState} />
-      <FormContainer>
+      <div className='form-main-container'>
         <div className='titles'>
           <h1>Select your plan</h1>
           <p>You have the option of monthly or yearly billing.</p>
+          <p className='error-message'>
+            {stepTwo.plan === "" ? "Please select a plan" : ""}
+          </p>
         </div>
 
         <form className='multi-step-form' onSubmit={handleSubmit}>
@@ -117,10 +98,24 @@ const StepTwo: React.FC = () => {
             onToggle={handleTogglePayment}
           />
 
-          <BackBtn onClick={backButton}> Go Back</BackBtn>
-          <NextBtn type='submit'>Next Step</NextBtn>
+          <button className='back-button' onClick={backButton}>
+            {" "}
+            Go Back
+          </button>
+          {stepTwo.plan === "" ? (
+            <button
+              onClick={pleaseSelectPlanErr}
+              className='next-button disabled'
+            >
+              Next Step
+            </button>
+          ) : (
+            <button className='next-button' type='submit'>
+              Next Step
+            </button>
+          )}
         </form>
-      </FormContainer>
+      </div>
     </>
   )
 }

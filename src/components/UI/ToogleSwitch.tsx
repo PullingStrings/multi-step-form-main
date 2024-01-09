@@ -16,7 +16,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ isYearly, onToggle }) => (
       cursor: "pointer",
       margin: "20px 0px",
       padding: "5px 0px",
-      background: "#d6d9e6",
+      background: "#f8f9fe",
       borderRadius: "3px",
       justifyContent: "center",
     }}
@@ -25,7 +25,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ isYearly, onToggle }) => (
       <p
         style={{
           color: isYearly ? "grey" : "#032a5a",
-          fontWeight: isYearly ? "normal" : "bold",
+          fontWeight: "bold",
         }}
       >
         Monthly
@@ -57,7 +57,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ isYearly, onToggle }) => (
       <p
         style={{
           color: isYearly ? "#032a5a" : "grey",
-          fontWeight: isYearly ? "bold" : "normal",
+          fontWeight: "bold",
         }}
       >
         Yearly

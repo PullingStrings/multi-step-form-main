@@ -15,6 +15,19 @@ const Container = styled.div`
   margin: 5px;
   transition: all 0.3s ease-in-out;
   width: 100%;
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+    gap: 20px;
+  }
+`
+
+const IconImage = styled(Image)`
+  margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 0px;
+  }
 `
 
 type PlanCardProps = {
@@ -63,14 +76,7 @@ const PlanCard: React.FC<PlanCardProps> = ({
     })
   }
 
-  // console.log(planPrices[plan])
   const planPrice = planPrices[plan]
-  // const planPrice =
-  //   state.stepTwo.planPrices[
-  //     state.stepTwo.plan as keyof typeof state.stepTwo.planPrices
-  //   ]
-
-  // console.log(planPrice)
 
   return (
     <Container
@@ -83,13 +89,7 @@ const PlanCard: React.FC<PlanCardProps> = ({
         border: isSelected ? "1px solid #ae2aff" : "1px solid #ccc",
       }}
     >
-      <Image
-        src={icons}
-        alt={plan}
-        style={{
-          marginBottom: "40px",
-        }}
-      />
+      <IconImage src={icons} alt={plan} />
 
       <div>
         <h4

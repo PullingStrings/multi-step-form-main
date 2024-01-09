@@ -3,10 +3,6 @@ import { useFormContext } from "../../utils/formContext"
 import StepsSideBar from "../UI/StepsSideBar"
 import styled from "styled-components"
 
-const FormContainer = styled.div`
-  position: relative;
-  width: 50%;
-`
 const CustomErrors = styled.div`
   display: flex;
   justify-content: space-between;
@@ -15,18 +11,6 @@ const CustomErrors = styled.div`
     color: #ef3232;
     font-size: 12px;
   }
-`
-const NextBtn = styled.button`
-  background-color: hsl(213, 96%, 18%);
-  color: #fff;
-  padding: 15px 25px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
 `
 
 const StepOne: React.FC = () => {
@@ -77,7 +61,7 @@ const StepOne: React.FC = () => {
   return (
     <>
       <StepsSideBar steps={stepOneState} />
-      <FormContainer>
+      <div className='form-main-container'>
         <div className='titles'>
           <h1>Personal info</h1>
           <p>Please provide your name, email address, and phone number.</p>
@@ -119,9 +103,12 @@ const StepOne: React.FC = () => {
             value={stepOne.phone}
             onChange={handleChange}
           />
-          <NextBtn type='submit'>Next Step</NextBtn>
+
+          <button className='next-button' type='submit'>
+            Next Step
+          </button>
         </form>
-      </FormContainer>
+      </div>
     </>
   )
 }

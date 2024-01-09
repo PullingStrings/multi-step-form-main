@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import bgSideBarDesktop from "../../../public/images/bg-sidebar-desktop.svg"
+import bgSideBarMobile from "../../../public/images/bg-sidebar-mobile.svg"
 
 const Span = styled.span<{ $ishighlighted?: boolean }>`
   padding: 10px;
@@ -25,6 +26,10 @@ const ContentElementContainer = styled.div`
   h2 {
     font-size: 14px;
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 const Container = styled.div`
   background-image: url(${bgSideBarDesktop.src});
@@ -38,8 +43,13 @@ const Container = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-    height: auto;
+    height: 172px;
     display: flex;
+    background-image: url(${bgSideBarMobile.src});
+    border-radius: 0px;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
   }
 `
 const StepsDiv = styled.div`
@@ -47,6 +57,10 @@ const StepsDiv = styled.div`
   display: flex;
   color: white;
   align-items: center;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `
 const StepsSideBar = (stepNumber: { steps: number }) => {
   return (

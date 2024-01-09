@@ -9,6 +9,7 @@ const MainContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 50px 10px;
 
   h1 {
     margin: 20px 0px;
@@ -17,6 +18,10 @@ const MainContainer = styled.div`
   p {
     text-align: center;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 const StepThankYou: React.FC = () => {
@@ -24,20 +29,23 @@ const StepThankYou: React.FC = () => {
   return (
     <>
       <StepsSideBar steps={stepFourState} />
-      <MainContainer>
-        <Image
-          width={100}
-          height={100}
-          src={"/images/icon-thank-you.svg"}
-          alt={"Thank you icon"}
-        />
-        <h1>Thank you!</h1>
-        <p>
-          Thanks for confirming your subscription! We hope you have fun using
-          our platform. If you ever need support, please feel free to email us
-          at support@loremgaming.com
-        </p>
-      </MainContainer>
+      <div className='form-main-container'>
+        <MainContainer>
+          <Image
+            sizes='100vw'
+            width={100}
+            height={100}
+            src={"/images/icon-thank-you.svg"}
+            alt={"Thank you icon"}
+          />
+          <h1>Thank you!</h1>
+          <p>
+            Thanks for confirming your subscription! We hope you have fun using
+            our platform. If you ever need support, please feel free to email us
+            at support@loremgaming.com
+          </p>
+        </MainContainer>
+      </div>
     </>
   )
 }
