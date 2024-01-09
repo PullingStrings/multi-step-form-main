@@ -41,6 +41,7 @@ type PlanCardProps = {
     Pro: { monthly: number; yearly: number }
   }
   icons: {
+    src: any
     Arcade: string
     Advanced: string
     Pro: string
@@ -76,8 +77,8 @@ const PlanCard: React.FC<PlanCardProps> = ({
     })
   }
 
-  const planPrice = planPrices[plan]
-
+  const planPrice = planPrices[plan as keyof typeof planPrices] //I'm certain that the key exists
+  // console.log(typeof icons.src)
   return (
     <Container
       onClick={() => {
@@ -89,8 +90,7 @@ const PlanCard: React.FC<PlanCardProps> = ({
         border: isSelected ? "1px solid #ae2aff" : "1px solid #ccc",
       }}
     >
-      <IconImage src={icons} alt={plan} />
-
+      <IconImage width={50} height={50} src={icons.src} alt={plan} />
       <div>
         <h4
           style={{
