@@ -53,7 +53,6 @@ Mulit Step Form Main is a web application built with Next.js and TypeScript, fea
 - **Next.js**: A React framework for server-rendered applications.
 - **TypeScript**: Ensures type safety and enhances the development experience.
 - **React Context API**: For state management across the multi-step form.
-- Additional technologies/libraries: [List any other significant libraries or tools used]
 
 ## Getting Started
 
@@ -66,11 +65,11 @@ Mulit Step Form Main is a web application built with Next.js and TypeScript, fea
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/PullingStrings/multi-step-form-main.git]
+   git clone https://github.com/PullingStrings/multi-step-form-main.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd [project-directory]
+   cd multi-step-form-main
    ```
 3. Install dependencies:
    ```bash
