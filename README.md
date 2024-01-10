@@ -33,10 +33,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-## Front-end Mentor
-
-Absolutely! A well-crafted README is crucial for setting the stage for your project. Here's a summary template you can use and adapt for your Next.js project:
-
 ---
 
 # Mulit Step Form Main
