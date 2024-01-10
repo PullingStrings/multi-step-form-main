@@ -101,6 +101,3 @@ The phone number you can use these combonations.
 +441234567890
 +44 1234 567 890`
 
-## License
-
-[Specify the project's license if applicable.]
