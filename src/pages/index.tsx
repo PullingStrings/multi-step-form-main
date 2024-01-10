@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import Head from "next/head"
 import StepOne from "@/components/FormSteps/StepOne"
 import StepTwo from "@/components/FormSteps/StepTwo"
 import StepThree from "@/components/FormSteps/StepThree"
@@ -8,7 +9,7 @@ import { useFormContext } from "@/utils/formContext"
 import GlobalStyles from "@/styles/GlobalStyles"
 import styled from "styled-components"
 
-const Container = styled.div`
+const Container = styled.main`
   display: flex;
   width: 100%;
   padding: 10px;
@@ -50,6 +51,9 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>Multi Step From</title>
+      </Head>
       {isClient && (
         <Container>
           <GlobalStyles />
